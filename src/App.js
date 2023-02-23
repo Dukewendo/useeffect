@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
 
 function App() {
+  const [starWarsData, setStarWarsData] = React.useState({});
+
+  const [count, setCount] = React.useState(0);
+
+  console.log("render");
+
+  React.useEffect(() => {
+    console.log("Effect function ran");
+  }, [count]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+      <h2>The count is {count}</h2>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+        Add
+      </button>
     </div>
   );
 }
